@@ -1,0 +1,58 @@
+/* Card styling */
+.card {
+  border-radius: 15px;
+  background: #fff;
+}
+
+/* Heading */
+.card h3 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px; /* eye icon ke liye jagah */
+}
+
+/* Eye icon styling */
+.password-wrapper .toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #6c757d; /* grey */
+  transition: color 0.3s ease;
+}
+
+.password-wrapper .toggle-password:hover {
+  color: #0d6efd; /* bootstrap primary blue */
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Success Button */
+.btn-success {
+  background-color: #198754;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+}

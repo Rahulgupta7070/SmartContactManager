@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})" >
+<head>
+	<meta charset="UTF-8" />
+	<title>Home page</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	  </head>
+<body>
+<section>
+  <div class="container py-5">
+
+  <!-- Welcome Banner -->
+  <div class="text-center mb-5 image-container">
+    <img  th:src="@{/Image/{img}(img=${user.imageUrl})}" 
+         alt="Profile" class="glow rounded-circle shadow mb-3" 
+         width="170" height="170">
+         
+    <h2>Welcome, <span th:text="${user.name}">User</span> 👋</h2>
+    <p class="text-muted fs-5">
+      Stay connected and organized. Manage your contacts with ease 🚀
+    </p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="text-center mb-5">
+    <a href="/user/add-contact" class="btn btn-primary btn-lg me-2">
+      ➕ Add Contact
+    </a>
+    <a href="/user/show-contact/0" class="btn btn-outline-primary btn-lg">
+      📒 View Contacts
+    </a>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="row g-4 mb-5 justify-content-center">
+    <div class="col-md-3">
+      <div class=" glow card shadow-sm p-3 text-center">
+        <h6>Total Contacts</h6>
+        <p class="fs-3 fw-bold text-primary" th:text="${totalContacts}">0</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glow  card shadow-sm p-3 text-center">
+        <h6>Last Added</h6>
+        <p class=" fs-5" th:text="${lastContact != null ? lastContact.name : 'No Contact'}">No Contact</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Contacts Carousel -->
+  
+<div class="mb-5">
+  <h4 class="mb-3 text-center">Recent Contacts</h4>
+  <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+    <div class="col" th:each="contact : ${recentContacts}">
+      <div class=" glow card shadow-sm h-100 text-center">
+        <img th:src="@{/Image/{img}(img=${contact.image})}"
+             class="card-img-top rounded-circle mx-auto mt-3"
+             style="width: 80px; height: 80px; object-fit: cover;"
+             alt="Contact">
+             
+        <div class="card-body">
+        
+              <h6 class="card-title">
+            <a th:href="@{'/user/' + ${contact.cId} + '/contact'}"
+               class="text-decoration-none">
+              <span th:text="${contact.name}"></span>
+              (<span th:text="${contact.secondName}"></span>)
+            </a>
+          </h6>
+          
+          <p class="card-text text-muted mb-1" th:text="${contact.phone}"> Phone </p>
+          <p class="card-text text-muted" th:text="${contact.email}">Email</p>
+          
+          <!-- Date -->
+          <p class="card-text" th:if="${contact.createdAt != null}">
+            Added on:
+            <span th:text="${#temporals.format(contact.createdAt, 'dd-MM-yyyy HH:mm')}"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- Motivational Banner -->
+  <div class="p-4 bg-primary text-white rounded text-center shadow-sm">
+    <h5>Keep your contacts organized and your network strong! 💪</h5>
+  </div>
+
+</div>
+<style>
+.image-container img {
+  transition: all 0.3s ease;
+}
+
+.image-container img:hover {
+  box-shadow: 0 0 50px rgba(13, 110, 253, 1) !important; /* blue glow */
+  transform: scale(1.05);
+}
+.glow:hover {
+  box-shadow: 0 0 20px rgba(13, 110, 253, 0.8) !important; /* blue glow */
+  transform: scale(1.05);
+}
+</style>
+
+
+   <script>
+    $(document).ready(()=>{
+    
+    $(".item").removeClass("active");
+    $("#home-link").addClass("active");
+    
+    });
+   
+   
+   </script>
+      
+</section>
+	
+</body>
+</html>

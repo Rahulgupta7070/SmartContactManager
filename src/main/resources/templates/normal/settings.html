@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings - Change Password</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" th:href="@{/css/settings.css}" />
+</head>
+<body>
+<section>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-4">
+            <h3 class="mb-4 text-center text-primary">
+              <i class="bi bi-shield-lock-fill"></i> Change Password
+            </h3>
+
+            <form th:action="@{/user/change-password}" method="post">
+<div class="form-group mb-3 position-relative">
+  <input id="oldPassword" name="oldPassword" type="password" 
+         class="form-control pe-5" placeholder="Enter old password" required />
+  <i class="fa-solid fa-eye toggle-password position-absolute" 
+     data-target="oldPassword" 
+     style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; color:#6c757d;"></i>
+</div>
+
+<div class="form-group mb-3 position-relative">
+  <input id="newPassword" name="newPassword" type="password" 
+         class="form-control pe-5" placeholder="Enter new password" required />
+  <i class="fa-solid fa-eye toggle-password position-absolute" 
+     data-target="newPassword" 
+     style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; color:#6c757d;"></i>
+</div>
+
+<div class="form-group mb-3 position-relative">
+  <input id="confirmPassword" name="confirmPassword" type="password" 
+         class="form-control pe-5" placeholder="Confirm new password" required />
+  <i class="fa-solid fa-eye toggle-password position-absolute" 
+     data-target="confirmPassword" 
+     style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer; color:#6c757d;"></i>
+</div>
+              <div class="d-flex justify-content-center gap-2">
+                <button type="submit" class="btn btn-success px-4">
+                  <i class="bi bi-check2-circle"></i> Change
+                </button>
+                <button type="reset" class="btn btn-warning px-4">
+                  <i class="bi bi-arrow-counterclockwise"></i> Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Toggle Password Script -->
+  <script>
+  $(document).ready(() => {
+    $(".item").removeClass("active");
+    $("#settings-link").addClass("active");
+
+    // Toggle password visibility
+    $(".toggle-password").on("click", function () {
+      let inputId = $(this).data("target");
+      let input = $("#" + inputId);
+
+      if (input.attr("type") === "password") {
+        input.attr("type", "text");
+        $(this).removeClass("fa-eye").addClass("fa-eye-slash"); // eye -> eye-slash
+      } else {
+        input.attr("type", "password");
+        $(this).removeClass("fa-eye-slash").addClass("fa-eye"); // eye-slash -> eye
+      }
+    });
+  });
+</script>
+
+</section>
+</body>
+</html>

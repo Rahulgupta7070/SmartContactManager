@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}">Bootstrap demo</title>
+     
+     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity ="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity ="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  
+  </head>
+  <body>
+    <!-- navebar start   -->
+    
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">SmartContactManager</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+      <ul class="navbar-nav ms-auto text-uppercase">
+      
+ 
+      
+        <li class="nav-item active ">
+          <a th:href="@{/}" class="nav-link " href="#">Home</a>
+        
+        </li>
+        
+        
+         
+         
+          <li class="nav-item">
+          <a class="nav-link" href="#" tabindex ="-1"  aria-disabled="true"><span th:text="${user.name}"></span></a>
+          </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/logout}" tabindex ="-1"  aria-disabled="true" >Logout</a>
+        </li>
+        
+                      <button id="toggleMode" class="btn btn-sm btn-outline-primary">
+ 🌙  Dark Mode 
+</button>
+        
+      </ul>
+     </div>
+    </div>
+</nav>
+    
+     <!--   nave bar end-->
+     
+     <div class="sidebar mt-2">
+     
+     <span class="crossBtn">&times;</span>
+     
+           <a id="home-link" href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i> Home</a>
+            <a id="contact-link" href="#" th:href="@{/user/show-contact/0}" class="item"><i class="fa-solid fa-address-card"></i> View Contacts</a>
+           <a id="add-link" href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-id-badge"></i> Add Contacts</a>
+           <a id="profile-link" href="#" th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Add Profile</a>
+           <a id="settings-link" href="#" th:href="@{/user/settings}"class="item"><i class="fa-solid fa-unlock-keyhole"></i> Change password</a>
+           <a href="#" th:href="@{/logout}" class="item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+           
+           <div class="divider"></div>
+     </div>
+     
+     <div class="content mt-5">
+               <i class="fas fa-bars m-3"> </i>
+               
+               
+               
+               
+               <!-- Message box 
+              <div th:if="${message}" 
+                      class="alert alert-dismissible fade show me-3 ms-3"
+                     th:classappend="' alert-' + ${message.type}" 
+                     role="alert"
+                      style="                                               
+                            padding: 1rem 1.5rem; 
+                            font-weight: 600; 
+                            font-size: 1.2rem; 
+                            border-radius: 12px; 
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                            text-align: center;" >                   
+                     
+                   <span th:text="${message.content}"></span>
+                   <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                   
+                </div>
+                -->
+                
+                   <!-- ✅ Message box (flash attribute ke liye) -->
+               <div th:if="${message}" 
+                      class="alert alert-dismissible fade show me-3 ms-3"
+                     th:classappend="' alert-' + ${message.type}" 
+                     role="alert"
+                      style="                                               
+                            padding: 1rem 1.5rem; 
+                            font-weight: 600; 
+                            font-size: 1.2rem; 
+                            border-radius: 12px; 
+                            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                            text-align: center;" >                   
+                     
+                   <span th:text="${message.content}"></span>
+                   <button type="button" style="font-weight:100" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <!-- ✅ Ye box ab delete hone ke baad ek hi baar dikhega 
+                        (controller me RedirectAttributes use karna hoga) -->
+               
+      
+         <div th:replace="${content}"></div>
+     </div>
+    
+
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    
+    <!--  delete function wlae start  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+function deleteContact(cid){
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete this contact!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location="/user/delete/"+cid; 
+      } else {
+        Swal.fire("Your contact is safe 🙂");
+      }
+    });
+}
+    </script>
+    
+    <!-- light  -->
+ <script>
+  const toggleBtn = document.getElementById("toggleMode");
+
+  // Check saved mode
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️ Light Mode"; // dark mode me ho to light mode ka option dikhana hai
+  } else {
+    document.body.classList.remove("dark-mode");
+    toggleBtn.textContent = "🌙 Dark Mode"; // light mode me ho to dark mode ka option dikhana hai
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    if (document.body.classList.contains("dark-mode")) {
+      // abhi dark hai → light karo
+      document.body.classList.remove("dark-mode");
+      toggleBtn.textContent = "🌙 Dark Mode";
+      localStorage.setItem("theme", "light");
+    } else {
+      // abhi light hai → dark karo
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "☀️ Light Mode";
+      localStorage.setItem("theme", "dark");
+    }
+  });
+</script>
+
+    
+      <script th:src="@{/jsScript/custom.js}"></script>
+    
+  </body>
+</html>

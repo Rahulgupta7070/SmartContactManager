@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8" />
+  <title th:text="${title}">Login</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <!-- Bootstrap CDN (agar already base.html me nahi h to include karna) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="d-flex justify-content-center align-items-center vh-100">
+
+  <div id="login-box" class="card shadow-lg p-4 col-md-6 col-lg-4">
+    <form id="login-form" th:action="@{/dologin}" method="post">
+      
+      <h3 class="text-center mb-4 fw-bold text-primary">Login</h3>
+
+      <!-- Error / Success alerts -->
+      <div th:if="${param.error}" class="alert alert-danger text-center">
+        Invalid username or password
+      </div>
+      <div th:if="${param.logout}" class="alert alert-success text-center">
+        You have been logged out
+      </div>
+      
+       <div th:if="${param.change}" class="alert alert-success text-center">
+       <p th:text="${param.change}"> </p>
+      </div>
+      
+      
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Email</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Enter your email">
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+      </div>
+
+      <!-- Remember me + button -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input id="remember-me" name="remember-me" type="checkbox" class="form-check-input">
+          <label for="remember-me" class="form-check-label">Remember me</label>
+        </div>
+        
+        
+        
+        <button type="submit" class="btn btn-primary px-4 ">Login</button>
+      </div>
+     
+     
+     
+
+      <!-- Register link -->
+      <div class="text-center mt-3">
+       <a th:href="@{/forgot}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover me-3"> Forgot Password</a>
+        <a href="/signup" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover ms-4">New user? Register here</a>
+        
+      </div>
+
+    </form>
+  </div>
+
+</section>
+</body>
+</html>

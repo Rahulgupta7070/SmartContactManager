@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Smart Contact Manager</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <!-- Bootstrap CDN (agar already base.html me nahi h to include karna) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="about-section py-5">
+    <div class="container text-center">
+        <h1 class="title mb-4">About Smart Contact Manager</h1>
+        <p class="description mb-5">
+            Smart Contact Manager helps you efficiently store, manage, and organize your contacts. 
+            It provides a smarter way to handle contact information with easy registration, secure login, 
+            and a user-friendly interface. Manage your contacts anytime and anywhere.
+        </p>
+
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>Responsive Design</h4>
+                    <p>Access from any device with smooth interface.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>Secure Login</h4>
+                    <p>Your data is safe with our secure login system.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>Contact Management</h4>
+                    <p>Easily add, edit, and delete contacts.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-card">
+                    <h4>Dark & Light Mode</h4>
+                    <p>Toggle modes for comfortable viewing anytime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

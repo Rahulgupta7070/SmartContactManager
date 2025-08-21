@@ -1,0 +1,141 @@
+/* =====================
+   Modern Login Card
+===================== */
+
+/* Login Card */
+#login-box {
+  max-width: 500px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  padding: 30px;
+}
+
+/* Dark Mode Card */
+body.dark-mode #login-box {
+  background: #1e1e1e;
+  box-shadow: 0 8px 20px rgba(255,255,255,0.1);
+}
+
+/* Inputs */
+#login-box input[type="text"],
+#login-box input[type="password"] {
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: 100%;
+  transition: all 0.3s ease;
+  background: #fff;
+  color: #000;
+}
+
+#login-box input:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 8px rgba(0,191,255,0.5);
+  outline: none;
+}
+
+/* Dark Mode Inputs */
+body.dark-mode #login-box input[type="text"],
+body.dark-mode #login-box input[type="password"] {
+  background: #3c3b3b; /* dark input background */
+  color: #f1f1f1;      /* light text */
+  border: 1px solid #555;
+}
+
+/* Placeholder color in dark mode */
+body.dark-mode #login-box input::placeholder {
+  color: #bbb;
+}
+
+/* Login Button */
+#login-box button {
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00bfff, #007bff);
+  color: #fff;
+  padding: 12px;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+#login-box button:hover {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+/* Register Link */
+#login-box a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: inherit;
+}
+
+
+
+                                   /* about ke liye css */
+                                   
+                                   
+                                   /* About Page Modern Styles */
+
+.about-section {
+    min-height: 80vh;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #f0f4f8, #e2e8f0);
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+.about-section .title {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.about-section .description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.feature-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Dark Mode Support */
+body.dark-mode .about-section {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+body.dark-mode .feature-card {
+    background: #2a2a2a;
+    box-shadow: 0 10px 25px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .feature-card p {
+    color: #ccc;
+}
+                                   
